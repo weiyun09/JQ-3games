@@ -10,12 +10,16 @@ body{
 }
 .container-1270px{
   width:1270px;
-  margin: 35px 0 20px;
+  margin: 35px 0 0;
   text-align: center;
-  font-size: 23px;
+  font-size: 20px;
   color: #363078;
+  font-family: Microsoft JhengHei;
   //text-shadow: 0 0 5px #FF0, 0 0 5px #ff0;
   text-shadow: 1px 1px #fff, 0px 0px #000;
+  span{
+    color: #f00;
+  }
 }
 .container-top{
   width:1170px;
