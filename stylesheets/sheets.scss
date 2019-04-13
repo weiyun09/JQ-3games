@@ -1,0 +1,82 @@
+body{
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+.container{
+  width:1100px;
+  margin-left: 70px;
+  display: flex;
+  justify-content:space-around;
+}
+.container-1270px{
+  width:1270px;
+  margin: 35px 0 20px;
+  text-align: center;
+  font-size: 23px;
+  color: #363078;
+  //text-shadow: 0 0 5px #FF0, 0 0 5px #ff0;
+  text-shadow: 1px 1px #fff, 0px 0px #000;
+}
+.container-top{
+  width:1170px;
+  display: flex;
+  justify-content:space-evenly;
+  margin: 25px 0 20px;
+  .im{
+    width: 130px;
+    height: 50px;
+    border-bottom:4px double #003C9D;
+   // background-color:#003C9D;
+    color:#000;
+    //border-radius:10px;
+    font-size: 20px;
+    font-family: Microsoft JhengHei;
+    font-weight: bold;
+    line-height: 70px;
+    text-align: center;
+    position: relative;
+    left: 90px;
+  }
+}
+
+button{
+  width: 150px;
+  height: 50px;
+  border:0;
+  background-color:#003C9D;
+  color:#fff;
+  border-radius:10px;
+  cursor:pointer; // 改變滑鼠游標的形狀 
+  font-size: 17px;
+  font-family: Microsoft JhengHei;
+  position: relative;
+  right: 20px;
+  span{
+    color:rgb(224, 39, 39);
+  }
+}
+
+button:hover{
+  color:#003C9D;
+  background-color:#fff;
+  border:2px #003C9D solid;
+}
+.outer {
+  width: 500px;
+  height: 500px;
+ // border: 1px solid #000;
+  position: relative;
+  background: #fff;
+  
+  .inside {
+    width: 122px;
+    height: 122px;
+    overflow: hidden;
+    position: absolute;
+  }
+  img {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+  }
+}
