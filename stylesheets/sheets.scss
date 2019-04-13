@@ -10,10 +10,11 @@ body{
 }
 .container-1270px{
   width:1270px;
-  margin: 35px 0 0;
+  margin: 30px 0 0;
   text-align: center;
   font-size: 20px;
   color: #363078;
+  font-weight: bold;
   font-family: Microsoft JhengHei;
   //text-shadow: 0 0 5px #FF0, 0 0 5px #ff0;
   text-shadow: 1px 1px #fff, 0px 0px #000;
@@ -25,7 +26,7 @@ body{
   width:1170px;
   display: flex;
   justify-content:space-evenly;
-  margin: 25px 0 20px;
+  margin: 2px 0 20px;
   .im{
     width: 130px;
     height: 50px;
