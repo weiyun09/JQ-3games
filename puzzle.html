@@ -53,8 +53,8 @@
             // var arrayHeight = new Array(16);
             function create() {
                 for (var i = 0; i <= 15; i++) {
-                    var width = Math.floor(i % 4) * 125+2; //怕有誤差所以加上floor
-                    var height = Math.floor(i / 4) * 125+2;
+                    var width = Math.floor(i % 4) * 125 + 2; //怕有誤差所以加上floor
+                    var height = Math.floor(i / 4) * 125 + 2;
 
                     array[i] = { // 建立物件的方式
                         'top': height,
@@ -144,7 +144,7 @@
                 isStart = true;
             });
             function Ran() { // 來亂的
-                for (var i = 0; i < 1000; i++) { // 打亂次數
+                for (var i = 0; i < 10; i++) { // 打亂次數
                     var go = Math.floor(Math.random() * 4);  //四個方向 0~3
                     if (go == 0) {
                         $("#" + leftIndex).click();
@@ -213,9 +213,10 @@
             }
 
             function endGame() {
-                if (array[0].left == 0 && array[0].top == 0) { //空白圖片到左上角時才做判斷
+                if (array[0].left == orpuzzle[0].left && array[0].top == orpuzzle[0].top) { //空白圖片到左上角時才做判斷
                     for (var i = 0; i < array.length; i++) {
                         if (array[i].top == orpuzzle[i].top && array[i].left == orpuzzle[i].left) {
+                            console.log("123");
                             if (i == array.length - 1) {
                                 setTimeout(function () {
                                     $("#0").css('display', 'unset');
