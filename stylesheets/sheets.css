@@ -1,4 +1,4 @@
-body {
+.puzzle-body {
   background: #eeaeca;
   background: radial-gradient(circle, #eeaeca 0%, #94bbe9 100%);
 }
@@ -95,5 +95,30 @@ button:hover {
   width: 500px;
   height: 500px;
   position: absolute;
+}
+
+.cardBack {
+  width: 150px;
+  height: 200px;
+}
+
+.cards {
+  margin: 0 auto;
+}
+
+.cards .cardBack {
+  margin: 10px 20px;
+}
+
+.cardfont {
+  width: 150px;
+  height: 200px;
+  margin: 10px 20px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.cardclose {
+  background-image: url(/img/picture0.png);
 }
 /*# sourceMappingURL=sheets.css.map */

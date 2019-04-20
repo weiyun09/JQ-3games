@@ -1,4 +1,4 @@
-body{
+.puzzle-body{
   background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
@@ -84,4 +84,32 @@ button:hover{
     height: 500px;
     position: absolute;
   }
+}
+
+// ========= memoryCard ========
+.cardBack{
+  width: 150px;
+  height: 200px;
+}
+.cards{
+  margin: 0 auto;
+  .cardBack{
+    margin: 10px 20px;
+  }
+}
+
+.cardfont { // 牌的基本架構
+  width: 150px;
+  height: 200px;
+  margin: 10px 20px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.cardclose { // 卡背的狀態
+  background-image: url(/img/picture0.png);
+}
+
+.cardopen { // 翻牌時的狀態
+  //background-image: url(/img/picture1.png);
 }

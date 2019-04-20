@@ -1,12 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheets/sheets.css">
+    <title>柴柴記憶卡牌 (*¯︶¯*)</title>
 </head>
+
 <body>
-    
+    <div class="container mt-5">
+        <ul class="cards row col-11 list-unstyled">
+            <!-- <img class="cardBack" src="./img/picture0.png" alt="卡背"> -->
+            <!-- <img class="cardBack" src="./img/picture1.png" alt="">
+        <img class="cardBack" src="./img/picture2.png" alt="">  
+        <img class="cardBack" src="./img/picture3.png" alt="">
+        <img class="cardBack" src="./img/picture4.png" alt="">
+        <img class="cardBack" src="./img/picture5.png" alt="">
+        <img class="cardBack" src="./img/picture6.png" alt="">
+        <img class="cardBack" src="./img/picture7.png" alt="">
+        <img class="cardBack" src="./img/picture8.png" alt="">
+        <img class="cardBack" src="./img/picture9.png" alt="">
+        <img class="cardBack" src="./img/picture10.png" alt=""> -->
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+
+    <script>
+        // var $div = $("<div></div>")
+        //     .append($('<img class="cardBack" src="./img/卡背背背背.png" alt="卡背">')
+        //         .css("width :", "150px")
+        //         .css("height :", "200px"))
+
+        //     .appendTo(".cards")
+
+        $(function () {
+            var array = new Array(20);
+            var num = array.length; // 判斷遊戲結束
+
+            function CreatNumber() { // 幫每張圖綁上編號
+                for (var i = 0; i < array.length; i++) { // 生產元素
+                    var $div = $("<li></li>")
+                        .addClass('cardfont')
+                        .addClass('cardclose')
+                        .val(i)
+                        // .append($('<img class="cardBack" src="./img/picture0.png" alt="卡背">')
+                        //     .css("width :", "150px")
+                        //     .css("height :", "200px"))
+                        .appendTo(".cards")
+                }
+                for (var index = 0; index < array.length / 2; index++) { // 生產內容,牌的種類
+                    array[index] = { //物件
+                        'url': "/img/picture" + (index + 1) + ".png",
+                        'id': index + 1
+                    }
+                    array[index + array.length / 2] = { //物件
+                        'url': "/img/picture" + (index + 1) + ".png",
+                        'id': index + 1
+                    }
+                }
+            }
+            CreatNumber();
+            Random();
+
+            function Random() {
+                console.log('123')
+                var a;
+                for(var i = 0 ; i<array.length ; i++){
+                    var rannum = Math.floor(Math.random() * 10)
+                    a = array[i].url
+                    array[i].url = array[rannum].url
+                    array[rannum].url = a
+
+                    a = array[i].id
+                    array[i].id = array[rannum].id
+                    array[rannum].id = a
+
+                }
+            }
+
+            var clickTimes = 0;
+            var clickOne;
+            var clickTwo;
+            $('.cardfont').one('click', pickCard); // 點擊事件 one的話防止是同一張點兩次
+            function pickCard() {
+                clickTimes++;
+                if (clickTimes == 1) {
+                    clickOne = this;
+                    console.log(clickOne);
+                }
+                if (clickTimes == 2) {
+                    clickTwo = this;
+                    console.log(clickTwo);
+                }
+                // $(this).off('click'); // 等同於one的作法
+                $(this).removeClass('cardclose')
+                $(this).addClass('cardopen').css('background-image', "url(" + array[this.value].url + ")");
+
+                if (clickTimes == 2) {
+                    $('.cardclose').off('click');
+                    clickTimes = 0;
+                    setTimeout(function () {
+                        if (array[clickOne.value].id == array[clickTwo.value].id) {
+                            $(clickOne).attr('disabled', true).css("visibility","hidden");
+                            $(clickTwo).attr('disabled', true).css("visibility","hidden");
+                          
+                            num-=2;
+                            if(num == 0){
+                                setTimeout(function name(params) {
+                                    alert("結束");                       
+                                },200);
+                            }
+                        }
+                        else {
+                            $(clickOne).removeClass('cardopen').addClass('cardclose').removeAttr('style');
+                            $(clickTwo).removeClass('cardopen').addClass('cardclose').removeAttr('style');
+                        }
+                        $('.cardfont').one('click', pickCard);
+                    }, 500);
+                }
+            }
+
+        })
+
+
+    </script>
+
 </body>
+
 </html>
