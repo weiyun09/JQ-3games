@@ -11,8 +11,8 @@
     <title>柴柴記憶卡牌 (*¯︶¯*)</title>
 </head>
 
-<body>
-    <div class="container mt-5">
+<body class="bodyclass">
+    <div class="container mt-3" id="memoryCard">
         <ul class="cards row col-11 list-unstyled">
             <!-- <img class="cardBack" src="./img/picture0.png" alt="卡背"> -->
             <!-- <img class="cardBack" src="./img/picture1.png" alt="">
@@ -28,7 +28,10 @@
         </ul>
     </div>
 
+    <div class="demo"></div> 
+
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="/jquery.fireworks.js"></script>
 
     <script>
         // var $div = $("<div></div>")
@@ -39,7 +42,7 @@
         //     .appendTo(".cards")
 
         $(function () {
-            var array = new Array(20);
+            var array = new Array(2);
             var num = array.length; // 判斷遊戲結束
 
             function CreatNumber() { // 幫每張圖綁上編號
@@ -71,7 +74,7 @@
                 console.log('123')
                 var a;
                 for(var i = 0 ; i<array.length ; i++){
-                    var rannum = Math.floor(Math.random() * 10)
+                    var rannum = Math.floor(Math.random() * array.length)
                     a = array[i].url
                     array[i].url = array[rannum].url
                     array[rannum].url = a
@@ -111,9 +114,21 @@
                           
                             num-=2;
                             if(num == 0){
-                                setTimeout(function name(params) {
-                                    alert("結束");                       
-                                },200);
+                                $('.demo')
+                                .append(
+                                    $('<div></div>')
+                                        .addClass('End')
+                                        .html("恭喜過關")
+                                )
+                                .fireworks({ 
+                                        //sound: true, // 聲音
+                                        opacity: 0.9, 
+                                        width: '100%', 
+                                        height: '100%'
+                                        });
+                                // setTimeout(function name(params) {                             
+                                //    alert("恭喜過關 (ﾉ>ω<)ﾉ");                       
+                                // },200);
                             }
                         }
                         else {
