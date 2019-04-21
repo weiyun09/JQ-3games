@@ -87,8 +87,11 @@ button:hover{
 }
 
 // ========= memoryCard ========
+
 .bodyclass{
-  background-color: antiquewhite
+ // background-color: #242222;
+ background: rgb(255,248,196);
+ background: radial-gradient(circle, rgba(255,248,196,1) 77%, rgba(255,231,158,1) 95%);
 }
 
 #memoryCard{
@@ -128,12 +131,14 @@ button:hover{
   position: absolute;
   left: 0;
   right: 0;
+  top: 30%;
   margin: 0 auto;
   text-align: center;
   font-size: 72px;
-  color: white;
+  color: rgba(255, 255, 83,0.6);
   font-weight: bold;
-  text-shadow: 0.1em 0.1em 0.1em #ddd;
+  text-shadow: 0 0 0.5em #9c0f0f,
+               0 0 0.5em #9c0f0f;
   z-index: 1;
 }
 
@@ -141,3 +146,37 @@ canvas {
   //因為他是絕對定位，所以z-index只能跟有絕對定位的比
   z-index: 0; 
 }
+
+body{
+  font-family: 'Kalam', cursive;
+}
+.button-again{
+  color: rgba(255,255,255,0.6);
+  text-shadow: 0 0 0.3em #aaa;
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: 0 auto;
+  z-index: 1;
+  border: 0;
+  background-color: transparent;
+  font-family: 'Kalam', cursive;
+  font-size: 36px;
+  &:hover {
+    font-size: 48px;
+    color: rgba(255,255,255,0.6);
+    background-color: transparent;
+    border: rgba(255,255,255,0.6) 1px dotted;
+  } 
+}
+
+@media screen and (max-width: 400px){
+
+}
+
+
+
+// 測試

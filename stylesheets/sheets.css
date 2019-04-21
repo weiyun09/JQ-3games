@@ -98,7 +98,8 @@ button:hover {
 }
 
 .bodyclass {
-  background-color: antiquewhite;
+  background: #fff8c4;
+  background: radial-gradient(circle, #fff8c4 77%, #ffe79e 95%);
 }
 
 #memoryCard {
@@ -140,16 +141,45 @@ button:hover {
   position: absolute;
   left: 0;
   right: 0;
+  top: 30%;
   margin: 0 auto;
   text-align: center;
   font-size: 72px;
-  color: white;
+  color: rgba(255, 255, 83, 0.6);
   font-weight: bold;
-  text-shadow: 0.1em 0.1em 0.1em #ddd;
+  text-shadow: 0 0 0.5em #9c0f0f, 0 0 0.5em #9c0f0f;
   z-index: 1;
 }
 
 canvas {
   z-index: 0;
+}
+
+body {
+  font-family: 'Kalam', cursive;
+}
+
+.button-again {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 0.3em #aaa;
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  margin: 0 auto;
+  z-index: 1;
+  border: 0;
+  background-color: transparent;
+  font-family: 'Kalam', cursive;
+  font-size: 36px;
+}
+
+.button-again:hover {
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: transparent;
+  border: rgba(255, 255, 255, 0.6) 1px dotted;
 }
 /*# sourceMappingURL=sheets.css.map */

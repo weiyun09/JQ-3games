@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="stylesheets/sheets.css">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Dancing+Script|Kalam|Pacifico|Satisfy|Shadows+Into+Light|Tangerine" rel="stylesheet">
+
     <title>柴柴記憶卡牌 (*¯︶¯*)</title>
 </head>
 
@@ -28,7 +30,7 @@
         </ul>
     </div>
 
-    <div class="demo"></div> 
+    <div class="demo"></div> <!---煙火-->
 
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script type="text/javascript" src="/jquery.fireworks.js"></script>
@@ -42,11 +44,12 @@
         //     .appendTo(".cards")
 
         $(function () {
-            var array = new Array(2);
-            var num = array.length; // 判斷遊戲結束
+            var arraySize = 20;
+            var array = new Array(arraySize);
+            var num = arraySize; // 判斷遊戲結束
 
             function CreatNumber() { // 幫每張圖綁上編號
-                for (var i = 0; i < array.length; i++) { // 生產元素
+                for (var i = 0; i < arraySize; i++) { // 生產元素
                     var $div = $("<li></li>")
                         .addClass('cardfont')
                         .addClass('cardclose')
@@ -56,12 +59,12 @@
                         //     .css("height :", "200px"))
                         .appendTo(".cards")
                 }
-                for (var index = 0; index < array.length / 2; index++) { // 生產內容,牌的種類
+                for (var index = 0; index < arraySize / 2; index++) { // 生產內容,牌的種類
                     array[index] = { //物件
                         'url': "/img/picture" + (index + 1) + ".png",
                         'id': index + 1
                     }
-                    array[index + array.length / 2] = { //物件
+                    array[index + arraySize / 2] = { //物件
                         'url': "/img/picture" + (index + 1) + ".png",
                         'id': index + 1
                     }
@@ -70,19 +73,18 @@
             CreatNumber();
             Random();
 
-            function Random() {
+            function Random() { //  讓牌的順序打亂
                 console.log('123')
                 var a;
-                for(var i = 0 ; i<array.length ; i++){
-                    var rannum = Math.floor(Math.random() * array.length)
-                    a = array[i].url
-                    array[i].url = array[rannum].url
-                    array[rannum].url = a
+                for(var i = 0 ; i<arraySize ; i++){
+                    var rannum = Math.floor(Math.random() * arraySize)
+                    a = array[i].url;
+                    array[i].url = array[rannum].url;
+                    array[rannum].url = a;
 
-                    a = array[i].id
-                    array[i].id = array[rannum].id
-                    array[rannum].id = a
-
+                    a = array[i].id;
+                    array[i].id = array[rannum].id;
+                    array[rannum].id = a;
                 }
             }
 
@@ -105,7 +107,7 @@
                 $(this).addClass('cardopen').css('background-image', "url(" + array[this.value].url + ")");
 
                 if (clickTimes == 2) {
-                    $('.cardclose').off('click');
+                    $('.cardclose').off('click'); // 當兩張牌被打開時,拔掉所有事件(不允許點擊第三張)
                     clickTimes = 0;
                     setTimeout(function () {
                         if (array[clickOne.value].id == array[clickTwo.value].id) {
@@ -115,17 +117,21 @@
                             num-=2;
                             if(num == 0){
                                 $('.demo')
+                                .html('<button id="again" class="button-again"> Again！</button>')
                                 .append(
                                     $('<div></div>')
                                         .addClass('End')
-                                        .html("恭喜過關")
+                                        .html("Congratulation d(･∀･)b")    
                                 )
                                 .fireworks({ 
-                                        //sound: true, // 聲音
+                                        sound: false, // 聲音
                                         opacity: 0.9, 
                                         width: '100%', 
                                         height: '100%'
                                         });
+
+                                //此處給予事件
+                                $('.button-again').on('click',AgainButton);
                                 // setTimeout(function name(params) {                             
                                 //    alert("恭喜過關 (ﾉ>ω<)ﾉ");                       
                                 // },200);
@@ -139,7 +145,18 @@
                     }, 500);
                 }
             }
+            function AgainButton(){
+                $('.cards').html('');
+                $('.demo').fireworks = function(){};
+                $('.demo').html('');
 
+                array = new Array(arraySize);
+                num = arraySize;
+                CreatNumber();
+                Random();
+                $('.cardfont').one('click', pickCard);
+                
+            }
         })
 
 
