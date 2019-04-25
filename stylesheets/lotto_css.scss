@@ -1,0 +1,73 @@
+// ========= lotto ========
+%square_scss {
+  margin: auto;
+  width: 300px;
+  height : 300px;
+  background: linear-gradient(173deg, #5E6964 0%, #575449 98%); 
+  background: -moz-linear-gradient(173deg, #5E6964 0%, #575449 98%); 
+  background: -webkit-linear-gradient(173deg, #5E6964 0%, #575449 98%); 
+  background: -o-linear-gradient(173deg, #5E6964 0%, #575449 98%); 
+  border-radius: 40px; 
+  // -webkit-border-radius: 40px; 
+  // -moz-border-radius: 40px; 
+}
+
+
+.lotto_body{
+    background-color: rgba(0, 0, 0, 0.712)
+  }
+  .input_number{ // 輸入的外面div
+    text-align: center;
+  } 
+  .square{
+      @extend %square_scss;
+      position: relative;
+      overflow: hidden;
+
+  }
+  .square_innerblock{
+      @extend %square_scss;
+      position: absolute;
+      line-height: 300px;
+      left: 300px;
+    }    
+ 
+  .css_button {
+    padding: 9.5px 19px;
+    border: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#D98585), to(#F24141));
+    background: -webkit-linear-gradient(top, #D98585, #F24141);
+    background: -moz-linear-gradient(top, #D98585, #F24141);
+    background: -ms-linear-gradient(top, #D98585, #F24141);
+    background: -o-linear-gradient(top, #D98585, #F24141);
+    background-color: #F24141;
+    box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #470505;
+    -webkit-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #470505;
+    -moz-box-shadow: 0px 7px 2px -5px #1A1A1A, inset 0px 0px 3px #470505;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    text-shadow: #FF7A7A 1px 1px 0px;
+    color: #9E1313;
+    font-size: 18px;
+    font-family: Comic Sans MS;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    }
+ .css_button:hover {
+    background: none;
+    background-color: #F24141;
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: none;
+    color: #F2E1E8;
+    }
+ .css_button:active {
+    top: 1px;
+    position: relative;
+    }
