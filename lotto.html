@@ -16,27 +16,106 @@
         <div class="input_number">
             最小值 : <input type="number" class="input_num" id="min">
             最大值 : <input type="number" class="input_num" id="max">
+        </div> 
+        <div align="center" class="mt-2 picked">
+            已經抽出的 : <span id="picked"></span>
         </div>
         <div>
             <div class="square mt-3">
-                <div id="block1" align="center" class="square_innerblock">123344533</div>
+                <div id="block1" align="center" class="square_innerblock"></div>
             </div>
         </div>
         <div align="center">
-            <button class="css_button mt-2"> 抽 ！</button>
+            <button class="css_button mt-2" id="pick"> 抽 ！</button>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script>
-        // $(function () {
-        //     setInterval(function () {
-        //         $('#block1').animate({ left: "-300px" }, 700,"linear",back());
-                
-        //     }, 1000)
-        //     function back(){
-        //         $('#block1').css('left', '300px');
-        //     }
-        // });
+        $(function () {
+            var max = 0,
+                min = 0;
+            var startBool = false;
+            $('#max').on('change', function () { //change 如果有發生改變就會跑function
+                max = parseInt($('#max').val());
+                startBool = false;
+                $('#block1').css('left', '300px');
+                $('#picked').html('');
+            });
+
+            $('#min').on('change', function () {
+                min = parseInt($('#min').val());
+                startBool = false;
+                $('#block1').css('left', '300px');
+                $('#picked').html('');
+            });
+
+            $('#pick').on('click', start);
+            function start() {
+                if (startBool == false) {
+                    set_suqare_num();
+                    startBool = true;
+                    picknum = pick_one();
+                    $('#block1').html(array[picknum]);
+                }
+
+                if(array.length == 0){
+                    alert ('你這傻子,沒咚咚可以抽惹 !');
+                    $('#pick').off('click');
+                    return;
+                }
+
+                set_time();
+            }
+
+            function set_suqare_num() { //初始化,為了抽範圍裡面的數字
+                array = new Array(max - min + 1); //設定陣列
+                for (var i = 0; i < array.length; i++) {
+                    array[i] = min + i;
+                }
+            }
+
+            var run = 0;
+            function set_time() {
+                set = setInterval(function () {
+                    $('#block1').animate({ left: "-300px" }, 900, "swing", function () { back(); });
+                    if (run >= 2) {
+                        run = 0;
+                        $('#block1').animate({ left: "0px" }, 900, "swing", function () { splice(); });
+                        clearInterval(set);
+                        return;
+                    }
+                    run++;
+                }, 1000);
+            }
+
+            function back() {
+                $('#block1').css('left', '300px');
+                picknum = pick_one();  //每次抽到都會更新picknum，所以當最後一圈時，就要做splice，意思是從陣列中拔除這數字
+                $('#block1').html(array[picknum]);
+            }
+
+            function pick_one() {
+                var random = Math.floor(Math.random() * array.length)
+                return random;
+            }
+            //建立一個function專門做splice(從陣列中刪除抽到的數字的動作) ≧▽≦ ╯
+            function splice() {
+                console.log(array[picknum]);
+                var storage = $('#picked').html();
+                if (storage == '') {
+                    $('#picked').html(storage + array[picknum]);
+                }
+                else {
+                    $('#picked').html(storage + ',' + array[picknum]);
+                }
+                var remove = array.splice(picknum, 1);
+            }
+            //有沒有春花秋月 夏蟬冬雪 不會散去
+            //有沒有一關上門 一躺下來 不再離去
+            //有沒有愛看的天 愛踏的地 我愛著的你
+            //陪我美麗的老去
+            //聽到都背起來惹 ≧▽≦ ╯
+        });
     </script>
 </body>
 

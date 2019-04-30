@@ -1,3 +1,7 @@
+html {
+  font-family: Microsoft JhengHei;
+}
+
 .square, .square_innerblock {
   margin: auto;
   width: 300px;
@@ -7,12 +11,22 @@
   border-radius: 40px;
 }
 
+.picked {
+  font-size: 20px;
+  width: 860px;
+}
+
 .lotto_body {
   background-color: rgba(0, 0, 0, 0.712);
 }
 
 .input_number {
   text-align: center;
+  font-size: 20px;
+}
+
+.input_number input {
+  width: 100px;
 }
 
 .square {
@@ -22,8 +36,9 @@
 
 .square_innerblock {
   position: absolute;
-  line-height: 300px;
   left: 300px;
+  font-size: 15em;
+  line-height: 300px;
 }
 
 .css_button {

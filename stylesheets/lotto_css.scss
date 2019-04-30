@@ -1,4 +1,8 @@
 // ========= lotto ========
+html{
+  font-family: Microsoft JhengHei;
+}
+  
 %square_scss {
   margin: auto;
   width: 300px;
@@ -12,12 +16,20 @@
   // -moz-border-radius: 40px; 
 }
 
+.picked{
+  font-size: 20px;
+  width: 860px;
+}
 
 .lotto_body{
     background-color: rgba(0, 0, 0, 0.712)
   }
   .input_number{ // 輸入的外面div
     text-align: center;
+    font-size: 20px;
+    input{
+      width: 100px;
+    }
   } 
   .square{
       @extend %square_scss;
@@ -28,8 +40,10 @@
   .square_innerblock{
       @extend %square_scss;
       position: absolute;
-      line-height: 300px;
       left: 300px;
+      font-size: 15em;
+      line-height: 300px;
+
     }    
  
   .css_button {
